@@ -1,6 +1,7 @@
 package tech.sigpay.entities;
 
 import jakarta.persistence.*;
+import tech.sigpay.enums.AuthProviderEnum;
 import tech.sigpay.enums.Plan;
 import tech.sigpay.enums.Roles;
 
@@ -29,8 +30,15 @@ public class UserEntity {
     private Plan plan;
 
     private LocalDateTime createdAt;
+    private LocalDateTime lastLoginAt;
+
     private LocalDateTime updatedAt;
-    private Boolean googleLogin;
+    private Boolean isActive;
+
+    private String googleId;
+
+    @Enumerated(EnumType.STRING)
+    private AuthProviderEnum authProvider;
 
     public UserEntity() {}
 
@@ -112,11 +120,35 @@ public class UserEntity {
         this.updatedAt = updatedAt;
     }
 
-    public Boolean getGoogleLogin() {
-        return googleLogin;
+    public AuthProviderEnum getAuthProvider() {
+        return authProvider;
     }
 
-    public void setGoogleLogin(Boolean googleLogin) {
-        this.googleLogin = googleLogin;
+    public void setAuthProvider(AuthProviderEnum authProvider) {
+        this.authProvider = authProvider;
+    }
+
+    public LocalDateTime getLastLoginAt() {
+        return lastLoginAt;
+    }
+
+    public void setLastLoginAt(LocalDateTime lastLoginAt) {
+        this.lastLoginAt = lastLoginAt;
+    }
+
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getGoogleId() {
+        return googleId;
+    }
+
+    public void setGoogleId(String googleId) {
+        this.googleId = googleId;
     }
 }
