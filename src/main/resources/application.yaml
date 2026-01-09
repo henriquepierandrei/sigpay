@@ -1,3 +1,30 @@
 spring:
   application:
     name: sigpay
+  datasource:
+    url: jdbc:postgresql://localhost:5432/sigpay_db
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+    jpa:
+      database-platform: org.hibernate.dialect.PostgreSQLDialect
+      hibernate:
+        ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
+
+
+jwt:
+  secret: "086305f90ff36fb969a55af604c43d7a9d6a2a694472f7ca92ad95a1984e660a"
+  expiration: 900000
+  refresh-expiration: 604800000
+
+server:
+  port: 8080
+
+google:
+  client:
+    id: ${GOOGLE_CLIENT_ID}
